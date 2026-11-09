@@ -10,20 +10,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Gradle CLI
+      - name: Install Gradle
         run: |
-          sudo apt update
-          sudo apt install -y gradle
+          sudo apt-get update
+          sudo apt-get install -y gradle
 
-      - name: Create Wrapper and Build APK
+      - name: Generate Wrapper and Build APK
         run: |
           gradle wrapper --gradle-version 8.5
           chmod +x gradlew
